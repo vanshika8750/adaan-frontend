@@ -1,0 +1,53 @@
+
+.banner {
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(220, 20, 60, 0.932);
+    text-align: center; 
+}
+
+.banner-head {
+    padding: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.banner-content {
+    padding: 1rem 6rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 2rem 2rem; 
+    }
+
+    .banner-head {
+        font-size: 1.5rem; 
+    }
+
+    .banner-content {
+        padding: 1rem 2rem; 
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 1.5rem 1rem; 
+    }
+
+    .banner-head {
+        font-size: 1.2rem;
+    }
+
+    .banner-content {
+        padding: 1rem 1rem; 
+        font-size: 0.9rem;
+    }
+}
