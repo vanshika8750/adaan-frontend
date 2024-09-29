@@ -39,7 +39,7 @@ body {
 
 .profile-card {
   flex: 1 1 calc(100% - 20px); 
-  background: #03285e; 
+  background: rgb(2, 2, 48); 
   color: white;
   border-radius: 8px;
   padding: 15px;
@@ -54,7 +54,9 @@ body {
   display: block; 
   margin-bottom: 10px;
 }
-
+.profile-card p{
+  padding-top: 1.5rem;
+}
 input[type="text"],
 input[type="email"],
 textarea {
@@ -71,12 +73,13 @@ button {
   margin-top: 15px;
   border: none;
   border-radius: 5px;
-  background-color: #c68642; 
+  background-color: crimson ; 
   color: rgb(10, 10, 58);
   font-size: large;
   font: bold;
   cursor: pointer;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
+  width: max-content !important; 
 }
 
 button:hover {

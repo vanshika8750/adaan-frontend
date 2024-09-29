@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getUserProfile, updateUserProfile } from '../api'; 
 import './Dashboard.css'; 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dashboard = () => {
   const [profile, setProfile] = useState({
@@ -46,7 +48,8 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       await updateUserProfile(token, profile); 
-      alert('Profile updated successfully');
+      toast.success('Profile updated successfully', { position: 'top-right' });
+    
       setIsEditing(false);
     } catch (err) {
       console.error('Error during profile update:', err); 

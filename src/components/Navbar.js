@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -39,8 +38,14 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
       <div>
         <img className="navbar-logo" src={adaanlogo} alt="adaaanlogo" />
       </div>
-      
-      <ul className={`navbar-links ${isMobile ? 'mobile' : ''}`}>
+
+      {/* Mobile Menu Icon */}
+      <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+        {isMobile ? <FaTimes /> : <FaBars />}
+      </div>
+
+      {/* Navigation Links */}
+      <ul className={`navbar-links ${isMobile ? 'active' : ''}`}>
         <li><Link to="/" onClick={closeMobileMenu}>Home</Link></li>
         {isAuthenticated ? (
           <>
@@ -51,10 +56,6 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
           <li><Link to="/login" onClick={closeMobileMenu}>Login</Link></li>
         )}
       </ul>
-
-      <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
-        {isMobile ? <FaTimes /> : <FaBars />}
-      </div>
 
       {showLogoutModal && (
         <div className="modal-overlay">

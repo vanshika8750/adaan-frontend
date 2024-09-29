@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerUser, sendOtp, verifyOtp } from '../api'; 
 import './Register.css';
 import loginImage from '../assets/login.avif';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ isAuthenticated, setIsAuthenticated }) => {
   const [user, setUser] = useState({
@@ -27,8 +29,10 @@ const Register = ({ isAuthenticated, setIsAuthenticated }) => {
       await sendOtp({ email: user.email, phone: user.phone, name: user.name });
       setOtpSent(true); 
       setError(''); 
+      toast.success('OTP sent successfully to your email!', { position: 'top-right' });
     } catch (err) {
       setError('Error sending OTP');
+      toast.error('Failed to send OTP. Please try again.', { position: 'top-right' });
     }
   };
 
@@ -37,18 +41,21 @@ const Register = ({ isAuthenticated, setIsAuthenticated }) => {
       const isVerified = await verifyOtp({ email: user.email, otp }); 
       if (isVerified) {
         const data = await registerUser(user);
-        alert('Registration successful');
-        navigate('/');
+        toast.success('Registration successful!', { position: 'top-right' });
+        navigate('/login');
       } else {
         setError('Invalid OTP');
+        toast.error('Invalid OTP. Please try again.', { position: 'top-right' });
       }
     } catch (err) {
       setError('Error verifying OTP');
+      toast.error('OTP verification failed.', { position: 'top-right' });
     }
   };
 
   return (
     <div className="wrapper">
+      <ToastContainer />
       <div className="register-container">
         <div className="login-image">
           <img src={loginImage} alt="Register" />
